@@ -250,17 +250,31 @@ a:hover,
 .timeline::before {
     content: '';
     position: absolute;
-    top: 0;
+    top: 1.25rem;
+    bottom: 1.25rem;
     left: calc(1.25rem - 1px);
     width: 2px;
-    height: 100%;
     background: linear-gradient(180deg, rgba(108, 92, 231, 0.5), rgba(0, 206, 201, 0.5));
+    z-index: 0;
 }
 
 .timeline-item {
+    position: relative;
     display: flex;
     gap: 1.5rem;
     align-items: flex-start;
+    z-index: 1;
+}
+
+.timeline-item:last-child::after {
+    content: '';
+    position: absolute;
+    left: calc(1.25rem - 1px);
+    top: calc(1.25rem + 1px);
+    bottom: -2rem;
+    width: 2px;
+    background: var(--bg-alt);
+    z-index: 2;
 }
 
 .timeline-icon {
@@ -274,6 +288,8 @@ a:hover,
     font-weight: 600;
     box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
     flex-shrink: 0;
+    position: relative;
+    z-index: 3;
 }
 
 .timeline-content {
